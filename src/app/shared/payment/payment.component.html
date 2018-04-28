@@ -1,0 +1,64 @@
+<div class="page container">
+
+<form #purchaseForm="ngForm" method="post" id="payment-form">
+
+    <div class="row holder-row">
+        <div class="label-sm">Name on Credit Card:</div>
+        <input [(ngModel)]="username" name="title" type="text"  required/>
+    </div>
+    <div class="row card-row">
+        <div class="label-sm" for="card-element">Credit Card or Debit Card:</div>
+        <img class="support-card" src="/assets/images/cc_accept.png">
+        <div id="card-element">
+          <!-- a Stripe Element will be inserted here. -->
+        </div>
+        <!-- Used to display Element errors -->
+        <div id="card-errors" role="alert"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-8" style="padding-right: 0px">
+            <div class="label-sm">Billing Address:</div>
+            <input [(ngModel)]="billingAddr.street" name="street" type="text"  required/>
+        </div>
+        <div class="col-4"> 
+            <div class="label-sm">City</div>
+            <input [(ngModel)]="billingAddr.city.id" name="city" type="text"  required/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4" style="padding-right: 0px"> 
+            <div class="label-sm">Province</div>
+            <input [(ngModel)]="billingAddr.city.province.id" name="province" type="text" required/>
+        </div>
+        <div class="col-4" style="padding-right: 0px"> 
+            <div class="label-sm">Country</div>
+            <input [(ngModel)]="billingAddr.city.province.country.id" name="country" type="text"  required/>
+        </div>
+        <div class="col-4"> 
+            <div class="label-sm">Postal Code</div>
+            <input [(ngModel)]="billingAddr.postal_code" name="postal_code" type="text"  required/>
+        </div>    
+    </div>
+
+    <div class="row btn-row">
+        <button class="btn btn-primary" type="submit" (click)="purchase()" block>Place Order</button>
+    </div>
+</form>
+
+<ng-template #dialogTemplate let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Payment</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Purchase successful!</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+</div>

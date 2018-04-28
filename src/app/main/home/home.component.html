@@ -1,0 +1,46 @@
+
+    <h2>Buy Bitcoin is simple and easy!</h2>
+    <div>Step 1: Create a bitcoin wallet or account.</div>
+    <div>If you have bitcoin account or wallet, skip step 1 and go to step 2.</div>
+    <div>If you don't have bitcoin wallet, you can create an online bitcoin account from our following recommand website:(They charge deposit fee, we don't.)</div>
+    <ul>
+        <li><a href="https://www.coinbase.com/">Coinbase</a></li>
+        <li><a href="https://www.quadrigacx.com/">QuadrigaCX</a></li>
+        <li><a href="https://www.kraken.com">Kraken</a></li>
+        <li><a href="https://coinsquare.com/">Coinsquare</a></li>
+    </ul>
+
+    <div>Step 2: Input the amount of Canadian Dollars you want to exchange and check. we have the best rate and lowest transaction fee.</div>
+    <h3>Today's rate (<span>{{today | date:'dd MMM yyyy'}}, {{today | date:'HH:mm:ss'}}</span>):</h3>
+
+    <h2>1 Bitcoin = {{rateBTC2CAD | number: '1.2-2'}} CAD</h2>
+
+    <form #exchangeForm="ngForm" method="post" id="exchange-form">
+
+        <div class="row">
+            <div class="label-sm">Canadian Dollas (CAD):</div>
+            <input [(ngModel)]="amount.CAD" (keyup)="onUpdateBTC()" name="amountCAD" type="text" required="" />
+        </div>
+        <div class="row">
+            <div class="label-sm">Convert to Bitcoin (BTC):</div>
+            <input [(ngModel)]="amount.BTC" (keyup)="onUpdateCAD()" name="amountBTC" type="text" required="" />
+        </div>
+    </form>
+
+    <ul>
+        <li>
+            <div>Market Value:</div>
+            <div>{{amount.BTC}} ( = CAD ${{amount.CAD}})</div>
+        </li>
+        <li>
+            <div>Fastest Transfer Cost:</div>
+            <div>{{cost.BTC}} ( = CAD ${{cost.CAD}})</div>
+        </li>
+        <li>
+            <div>Total:</div>
+            <div>{{total.BTC}} ( = CAD ${{total.CAD}})</div>
+        </li>
+    </ul>
+
+    <div>Step 3: Deposit by your credit card or Credit card, and we will transfer Bitcoin to your account (Bitcoin network delay may apply, usually takes 15~30 minutes).</div>
+    <app-payment [amount]="amountCAD" ></app-payment>
