@@ -1,5 +1,5 @@
-$navbar_height:60px;
-$navbar-mobile-h:60px;
+$navbar_height:50px;
+$navbar-mobile-h:50px;
 $search-btn-w:80px;
 $border-color:#b0b0b0;
 
@@ -7,17 +7,22 @@ header{
     .navbar{
         min-height:$navbar_height;
         background-color:#fff;
-        padding-right: 54px;
-
+        border-bottom: 1px solid $border-color;
 
         .navbar-toggler{
             padding:5px;
             border-radius: 2px;
         }
 
+        .rate-now{
+            height:$navbar_height;
+            padding:0px 15px 8px 280px;
+            font-size:12px;
+        }
+
         .navbar-brand{
             height:$navbar_height;
-            padding:5px 15px 5px 160px;
+            padding:5px 15px 5px 150px;
 
             .logo-icon{
                 width:40px;
@@ -26,7 +31,7 @@ header{
             }
 
             .brand-name{
-                font-size:24px;
+                font-size:30px;
                 font-weight:600;
                 color:#333;
                 float: left;

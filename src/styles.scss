@@ -1,1 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/scss/bootstrap.scss"; 
+$fa-font-path: "../node_modules/font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
+
+$text-color:#484850;
+$title-color:#363636;
+.page{
+	padding-top:80px;
+}
+
+body{
+	color:$text-color;
+
+	.title-md{
+	  font-family: "Microsoft Yahei",'Raleway', sans-serif;
+	  font-size: 18px;
+	  line-height: 30px;
+	  font-weight: 500;
+	  color: $title-color;
+	}
+
+	.title-sm{
+	  font-family: "Microsoft Yahei",'Raleway', sans-serif;
+	  font-size:16px;
+	  line-height:20px;
+	  font-weight:400;
+	  color: $title-color;
+	}
+
+	.title-xs{
+	  font-family: "Microsoft Yahei", 'Raleway', sans-serif;
+	  font-size: 12px;
+	  font-weight: 300;
+	  line-height: 18px;
+	  color: $title-color
+	}
+
+	.label-md{
+		width:100%;
+		font-size:14px;
+		color:$text-color;
+	}
+	
+	.label-sm{
+		width:100%;
+		font-size:12px;
+		color:$text-color;
+		line-height:16px;
+	}
+
+	input{
+		height:36px;
+		outline:none;
+		padding-left:10px;
+		padding-right:10px;
+	}
+
+	ul{
+		list-style-type:none;
+	}
+}

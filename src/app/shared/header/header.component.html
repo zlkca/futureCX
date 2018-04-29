@@ -5,20 +5,22 @@
     </button>
 
     <a class="navbar-brand" href="#">
-        <img class="logo-icon" src="/assets/images/logo.png" />
+        <!-- <img class="logo-icon" src="/assets/images/logo.png" /> -->
         <div class="brand-name">Investrefer</div>
+        <div style="font-size: 13px;padding-top: 10px;">Alpha Test </div>
+        <div class="rate-now"><span> 1 Bitcoin = {{BTC2CAD | number: '1.2-2'}} CAD</span> {{dt | date:'dd MMM yyyy'}}, {{dt | date:'HH:mm:ss'}}</div>
     </a>
     
     <div class="collapse navbar-collapse" id="navbarContent">
         <div class="row">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+<!--                 <li class="nav-item active">
                     <a class="nav-link" (click)="toPage('home')">Home<span class="sr-only">(current)</span></a>
-                </li>
+                </li> -->
 <!--                 <li class="nav-item active">
                     <a class="nav-link" (click)="toPage('blog')" data-toggle="collapse">{{'BLOG' | translate}}</a>
                 </li> -->
-                <li class="nav-item" *ngIf="!isLogin">
+<!--                 <li class="nav-item" *ngIf="!isLogin">
                     <a class="nav-link" (click)="toPage('admin/login')" data-toggle="collapse">Login</a>
                 </li>
                 <li class="nav-item" *ngIf="isLogin">
@@ -26,16 +28,16 @@
                 </li>
                 <li class="nav-item" *ngIf="isLogin">
                     <a class="nav-link" (click)="logout()" data-toggle="collapse">Logout</a>
-                </li>
+                </li> -->
 <!--                 <li class="nav-item">
                     <a class="nav-link" (click)="toPage('contact')" >{{'CONTACT_US' | translate}}</a>
                 </li> -->
-                <li class="nav-item search-area">
+<!--                 <li class="nav-item search-area">
                     <div class="input-group search-box">
                       <input type="text" [(ngModel)]="keyword" placeholder="Searh Keyword" aria-describedby="basic-addon2" (keyup)="term$.next($event.target.value)">
                       <div class="btn btn-search" (click)="search(keyword)"><i class="fa fa-search"></i>Search</div>
                     </div>
-                </li>
+                </li> -->
             <!--           <li class="nav-item language-menu">
                 <a class="nav-link"  (click)="changeLanguage('en')">English</a>
               </li>

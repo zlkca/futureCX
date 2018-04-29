@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {environment} from '../../../environments/environment';
 import { Address } from '../../account/account';
+import { PaymentService } from '../../payment/payment.service';
 
 const STRIPE_CLIENT_KEY = environment.STRIPE.CLIENT_KEY
 // stripe api
@@ -10,6 +11,7 @@ const STRIPE_CLIENT_KEY = environment.STRIPE.CLIENT_KEY
 
 @Component({
   selector: 'app-payment',
+  providers:[PaymentService],
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.scss']
 })
@@ -18,67 +20,23 @@ export class PaymentComponent implements OnInit {
     card:any;
     stripe:any;
     billingAddr:Address = new Address();
+    username:string;
 
     @Input()
     set amount(amount:number){
       this._amount = amount;
     }
 
-    constructor() {
+    constructor(private paymentServ:PaymentService) {
 
     }
 
     ngOnInit() {
 
-      this.renderCreditCard();
+      this.paymentServ.renderCreditCard();
     }
 
-    renderCreditCard(){
-        this.stripe = Stripe(STRIPE_CLIENT_KEY);
-        // let elements = this.stripe.elements();
-        // let style = {
-        //   base: {
-        //     color: '#32325d',
-        //     lineHeight: '18px',
-        //     fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-        //     fontSmoothing: 'antialiased',
-        //     fontSize: '16px',
-        //     '::placeholder': {
-        //       color: '#aab7c4'
-        //     }
-        //   },
-        //   invalid: {
-        //     color: '#fa755a',
-        //     iconColor: '#fa755a'
-        //   }
-        // };
-
-        // // Create an instance of the card Element
-        // this.card = elements.create('card', {style: style, hidePostalCode:true});
-
-        // // Add an instance of the card Element into the `card-element` <div>
-        // this.card.mount('#card-element');
-        // this.card.addEventListener('change', function(event:any) {
-        //   let cardError = document.getElementById('card-errors');
-        //   if (event.error) {
-        //     cardError.textContent = event.error.message;
-        //   } else {
-        //     cardError.textContent = '';
-        //   }
-        // });
-    }
-
-    stripeTokenHandler(token:any) {
-      // // Insert the token ID into the form so it gets submitted to the server
-      // let form = document.getElementById('payment-form');
-      // let hiddenInput = document.createElement('input');
-      // hiddenInput.setAttribute('type', 'hidden');
-      // hiddenInput.setAttribute('name', 'stripeToken');
-      // hiddenInput.setAttribute('value', token.id);
-      // form.appendChild(hiddenInput);
-      // // Submit the form
-      // //form.submit();
-    }
+    
 
     purchase(){
         // let self = this;

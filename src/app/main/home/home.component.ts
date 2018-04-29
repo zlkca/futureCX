@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
     amount:any = {CAD:0, BTC:0};
     cost:any = {CAD:0, BTC:0};
     total:any = {CAD:0, BTC:0};
-    today:any = new Date();
+    receive_addr:string = '';
 
     constructor(private sharedServ: SharedService) {
 

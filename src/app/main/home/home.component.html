@@ -1,8 +1,8 @@
-
-    <h2>Buy Bitcoin is simple and easy!</h2>
-    <div>Step 1: Create a bitcoin wallet or account.</div>
+<div class="container page home-page">
+    <h2>Buy Bitcoin in Canada is simple!</h2>
+    <div class="title-md">Step 1: Create a bitcoin wallet.</div>
     <div>If you have bitcoin account or wallet, skip step 1 and go to step 2.</div>
-    <div>If you don't have bitcoin wallet, you can create an online bitcoin account from our following recommand website:(They charge deposit fee, we don't.)</div>
+    <div>If you don't have bitcoin wallet, you can create an online bitcoin account from our following recommand website: (They charge deposit fee, we don't.)</div>
     <ul>
         <li><a href="https://www.coinbase.com/">Coinbase</a></li>
         <li><a href="https://www.quadrigacx.com/">QuadrigaCX</a></li>
@@ -10,37 +10,44 @@
         <li><a href="https://coinsquare.com/">Coinsquare</a></li>
     </ul>
 
-    <div>Step 2: Input the amount of Canadian Dollars you want to exchange and check. we have the best rate and lowest transaction fee.</div>
-    <h3>Today's rate (<span>{{today | date:'dd MMM yyyy'}}, {{today | date:'HH:mm:ss'}}</span>):</h3>
+    <div class="title-md">Step 2: Input the amount you want to exchange and your wallet address in which you want to get the coin. </div>
+    <div class="title-xs">Note: Most exchange site charges on exchange rate, we don't charge coin buyer, we only charge coin seller.</div>
+    <!-- <h3>Today's rate (<span>{{today | date:'dd MMM yyyy'}}, {{today | date:'HH:mm:ss'}}</span>):</h3> -->
 
-    <h2>1 Bitcoin = {{rateBTC2CAD | number: '1.2-2'}} CAD</h2>
+    <!-- <h2>1 Bitcoin = {{rateBTC2CAD | number: '1.2-2'}} CAD</h2> -->
 
     <form #exchangeForm="ngForm" method="post" id="exchange-form">
-
         <div class="row">
-            <div class="label-sm">Canadian Dollas (CAD):</div>
+            <div class="inline-text">Canadian Dollas (CAD):&nbsp;$</div>
             <input [(ngModel)]="amount.CAD" (keyup)="onUpdateBTC()" name="amountCAD" type="text" required="" />
+            <div class="inline-text">&nbsp; = Bitcoin (BTC) &nbsp; {{amount.BTC}}</div>
         </div>
-        <div class="row">
-            <div class="label-sm">Convert to Bitcoin (BTC):</div>
-            <input [(ngModel)]="amount.BTC" (keyup)="onUpdateCAD()" name="amountBTC" type="text" required="" />
-        </div>
-    </form>
-
     <ul>
-        <li>
-            <div>Market Value:</div>
-            <div>{{amount.BTC}} ( = CAD ${{amount.CAD}})</div>
+        <li class="row">
+            <div class="col-md-3">Market Value:</div>
+            <div class="col-md-4">{{amount.BTC}} BTC = ${{amount.CAD}} CAD</div>
         </li>
-        <li>
-            <div>Fastest Transfer Cost:</div>
-            <div>{{cost.BTC}} ( = CAD ${{cost.CAD}})</div>
+        <li class="row">
+            <div class="col-md-3">Fastest Transfer Cost:</div>
+            <div class="col-md-4">{{cost.BTC}} BTC = ${{cost.CAD}} CAD</div>
         </li>
-        <li>
-            <div>Total:</div>
-            <div>{{total.BTC}} ( = CAD ${{total.CAD}})</div>
+        <li class="row">
+            <div class="col-md-3">You will get:</div>
+            <div class="col-md-4">{{total.BTC}} BTC = ${{total.CAD}} CAD</div>
         </li>
     </ul>
 
-    <div>Step 3: Deposit by your credit card or Credit card, and we will transfer Bitcoin to your account (Bitcoin network delay may apply, usually takes 15~30 minutes).</div>
-    <app-payment [amount]="amountCAD" ></app-payment>
+    <div class="row">
+        <div class="inline-text">Your Coin Receive Address:&nbsp;</div>
+        <input class="btc-addr-input"[(ngModel)]="receive_addr" name="receive_addr" type="text" required="" />
+        <div class="title-xs red">*Make sure Your Coin Receive Address is correct!!!, We will not responsible for the lost due to user input wrong coin address.&nbsp;</div>
+    </div>
+    </form>
+
+    <div class="title-md">Step 3: Read and Sign Agreement with us.</div>
+    <div class="text-sm" style="margin-bottom: 20px;">Click the link to open <a href="#">Our Privacy Agreement and Service Agreement</a></div> 
+
+    <div class="title-md">Step 4: Deposit by your Credit/Debit Card, Bitcoin will transfer to your account. 
+    <div class="title-xs">Note: Bitcoin network delay may apply, approximately takes 15~30 minutes.</div>
+    <app-payment [amount]="amount.CAD" ></app-payment>
+</div>

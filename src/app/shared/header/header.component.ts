@@ -23,25 +23,37 @@ export class HeaderComponent implements OnInit {
     user:any;
     keyword:string;
     term$ = new Subject<string>();
+    dt:any = new Date();
+    BTC2CAD:number = 11100;
     //wechat:any = new Wechat();
 
     constructor(private router:Router, private authServ:AuthService, private sharedServ:SharedService) {
 
         let self = this;
 
-        this.term$.debounceTime(800).distinctUntilChanged().subscribe((keyword:any) => {
-                self.search(keyword);
-            });
+        // this.term$.debounceTime(800).distinctUntilChanged().subscribe((keyword:any) => {
+        //         self.search(keyword);
+        //     });
     }
 
     ngOnInit() {
         let self = this;
-        this.sharedServ.getMsgObservable().subscribe(msg => {
-            if('OnUpdateHeader' === msg.name){
-                self.setLoginByToken();
+        // this.sharedServ.getMsgObservable().subscribe(msg => {
+        //     if('OnUpdateHeader' === msg.name){
+        //         self.setLoginByToken();
+        //     }
+        // });
+        // self.setLoginByToken();
+
+        this.sharedServ.getQuote().subscribe(r =>{
+            if(r && r.length){
+                let s = 0;
+                for(let t of r ){
+                    s += parseFloat(t.bid);
+                }
+                self.BTC2CAD = s / r.length;
             }
         });
-        self.setLoginByToken();
     }
 
     setLoginByToken(){
