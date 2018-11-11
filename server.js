@@ -27,6 +27,7 @@ app.use(express.static(__dirname + '/dist'));
 app.get('*',function(req,res){
     res.sendFile(path.join(__dirname, '/dist/index.html'));
 });
+
 //app.listen(SERVER_PORT, () => console.log('Server setup'))
 app.set('port', process.env.PORT || APP_SERVER.PORT)
 
